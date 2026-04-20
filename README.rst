@@ -201,7 +201,7 @@
 
 .. code-block:: bash
   
-  COMPARTMENT_NAME="oci-cloud-guard-instance-security-organize"
+  COMPARTMENT_NAME="oci-oracle-integration-cloud-organize"
   COMPARTMENT_ID=$(oci iam compartment list \
     --lifecycle-state ACTIVE \
     --profile ADMIN \
