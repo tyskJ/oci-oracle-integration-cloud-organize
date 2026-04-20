@@ -128,6 +128,7 @@
 
   cat <<EOF > oci.auto.tfvars
   tenancy_ocid = "${TENANCY_ID}"
+  source_ip = "接続元IPアドレス(CIDR形式)"
   EOF
 
 
