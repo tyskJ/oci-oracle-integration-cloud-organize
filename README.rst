@@ -17,7 +17,7 @@
 作業環境 - ローカル -
 =====================================================================
 * macOS Tahoe ( v26.3.1 (a) )
-* Visual Studio Code 1.113.0
+* Visual Studio Code 1.116.0
 * Terraform v1.14.5
 * oci cli 3.71.0
 * Python 3.14.2
