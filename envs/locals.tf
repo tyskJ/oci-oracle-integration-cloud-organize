@@ -23,3 +23,19 @@ locals {
     }
   }
 }
+
+/************************************************************
+Functions
+************************************************************/
+locals {
+  apps = {
+    com_stop = {
+      name    = "compute-stop"
+      fn_ocid = var.fn_stop_ocid
+    }
+    waf_close = {
+      name    = "waf-close"
+      fn_ocid = var.fn_close_ocid
+    }
+  }
+}
