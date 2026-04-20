@@ -15,3 +15,12 @@ SSH port forwarding
 #     -p 22222 opc@localhost
 #   EOT
 # }
+
+/************************************************************
+Web URL
+************************************************************/
+output "web_url" {
+  value = <<-EOT
+    http://${oci_core_public_ip.flb.ip_address}/
+  EOT
+}
