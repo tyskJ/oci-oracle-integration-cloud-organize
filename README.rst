@@ -126,9 +126,24 @@
 
 .. code-block:: bash
 
+  WORK_USERNAME="作業IAMユーザー名"
+  WORK_USER_OCID=$(oci iam user list \
+    --all \
+    --lifecycle-state ACTIVE \
+    --profile ADMIN \
+    --auth security_token \
+    --query "data[?name=='${WORK_USERNAME}'].id | [0]" \
+    --raw-output
+  )
+
+.. code-block:: bash
+
   cat <<EOF > oci.auto.tfvars
   tenancy_ocid = "${TENANCY_ID}"
   source_ip = "接続元IPアドレス(CIDR形式)"
+  work_user_ocid = "${WORK_USER_OCID}"
+  fn_stop_ocid = ""
+  fn_close_ocid = ""
   EOF
 
 
