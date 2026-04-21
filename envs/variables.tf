@@ -10,6 +10,10 @@ variable "default_domain_id" {
   type = string
 }
 
+variable "email_address" {
+  type = string
+}
+
 variable "work_user_ocid" {
   type = string
 }

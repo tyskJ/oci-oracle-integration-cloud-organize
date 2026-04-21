@@ -156,6 +156,7 @@
   tenancy_ocid = "${TENANCY_ID}"
   source_ip = "接続元IPアドレス(CIDR形式)"
   default_domain_id = "${DEFAULT_DOMAIN_ID}"
+  email_address = "通知用メールアドレス"
   work_user_ocid = "${WORK_USER_OCID}"
   fn_stop_ocid = ""
   fn_close_ocid = ""
