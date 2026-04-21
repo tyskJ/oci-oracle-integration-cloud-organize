@@ -6,6 +6,10 @@ variable "source_ip" {
   type = string
 }
 
+variable "default_domain_id" {
+  type = string
+}
+
 variable "work_user_ocid" {
   type = string
 }
