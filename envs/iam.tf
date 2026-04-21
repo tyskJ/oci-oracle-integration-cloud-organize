@@ -59,3 +59,37 @@ resource "oci_identity_policy" "functions_compute" {
     )
   ]
 }
+
+/************************************************************
+IAM Policy - OIC Instance
+************************************************************/
+# 動的グループ(resource.type="integrationinstance") でやろうとしたができず
+# 動的グループ(resource.id="CLIENT ID") でやろうとしたができず
+# request.principal.id に CLIENT ID を指定する方法でできたためFIX
+# CLIENT ID は、DefaultドメインのOracle Cloud サービスに作成されたOICから取得
+# request.principal.compartment.id の制御は正直不要
+resource "oci_identity_policy" "oic_instance_functions" {
+  compartment_id = var.tenancy_ocid
+  description    = "OIC Instance Policy for Functions"
+  name           = "oic-instance-functions-policy"
+  statements = [
+    format(
+      "allow any-user to read fn-app in compartment %s where all {request.principal.id= '%s', request.principal.compartment.id='%s'}",
+      oci_identity_compartment.workload.name,
+      oci_integration_integration_instance.developer.idcs_info[0].idcs_app_name,
+      var.tenancy_ocid
+    ),
+    format(
+      "allow any-user to read fn-function in compartment %s where all {request.principal.id= '%s', request.principal.compartment.id='%s'}",
+      oci_identity_compartment.workload.name,
+      oci_integration_integration_instance.developer.idcs_info[0].idcs_app_name,
+      var.tenancy_ocid
+    ),
+    format(
+      "allow any-user to use fn-invocation in compartment %s where all {request.principal.id= '%s', request.principal.compartment.id='%s'}",
+      oci_identity_compartment.workload.name,
+      oci_integration_integration_instance.developer.idcs_info[0].idcs_app_name,
+      var.tenancy_ocid
+    ),
+  ]
+}
