@@ -15,6 +15,13 @@ resource "oci_logging_log_group" "functions_application" {
   description    = "For Functions Application Log Group"
 }
 
+### OIC Instance
+resource "oci_logging_log_group" "oic_instance" {
+  compartment_id = oci_identity_compartment.workload.id
+  display_name   = "oic-instance-log-group"
+  description    = "For OIC Instace Log Group"
+}
+
 /************************************************************
 Logs
 ************************************************************/
@@ -55,5 +62,24 @@ resource "oci_logging_log" "functions_application" {
     }
   }
   log_group_id       = oci_logging_log_group.functions_application.id
+  retention_duration = 30
+}
+
+### OIC Instance
+resource "oci_logging_log" "oic_instance" {
+  display_name = "integration-instance_activitystream"
+  is_enabled   = true
+  log_type     = "SERVICE"
+  configuration {
+    compartment_id = oci_identity_compartment.workload.id
+    source {
+      source_type = "OCISERVICE"
+      service     = "integration"
+      category    = "activitystream"
+      resource    = oci_integration_integration_instance.developer.id
+      parameters  = {}
+    }
+  }
+  log_group_id       = oci_logging_log_group.oic_instance.id
   retention_duration = 30
 }
