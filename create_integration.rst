@@ -53,3 +53,16 @@
 .. note:: 
 
   * 同様の手順で ``compute-stop`` Functions を後段に登録します。
+
+* プライマリ・ビジネス識別子を編集 (必須のため)
+
+.. image:: ./doc/image/pic11.png
+  :scale: 100%
+
+.. image:: ./doc/image/pic12.png
+  :scale: 100%
+
+* アクティブ化
+
+.. image:: ./doc/image/pic13.png
+  :scale: 100%
