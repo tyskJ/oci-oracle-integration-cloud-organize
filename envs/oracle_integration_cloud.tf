@@ -19,9 +19,4 @@ resource "oci_integration_integration_instance" "developer" {
       var.source_ip
     ]
   }
-  lifecycle {
-    ignore_changes = [
-      system_tags
-    ]
-  }
 }
